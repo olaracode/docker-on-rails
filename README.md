@@ -1,24 +1,38 @@
-# README
+# Docker on Rails
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+## Getting started
 
-Things you may want to cover:
+To run this project simple clone the repository and build the docker container.
 
-* Ruby version
+```bash
+git clone https://github.com/olaracode/docker-on-rails app_name
+cd app_name
+docker-compose up --build # To run and build the container
+```
 
-* System dependencies
+## Rails CLI
 
-* Configuration
+> To use the rails CLI you need to have the [container running](#getting-started).
 
-* Database creation
+### To access the rails CLI you can use the following command:
 
-* Database initialization
+```bash
+docker-compose exec web bash
+```
 
-* How to run the test suite
+### Creating a new scaffold:
 
-* Services (job queues, cache servers, search engines, etc.)
+```bash
+rails g scaffold model_name attribute:type
 
-* Deployment instructions
+# Example
+rails g scaffold Post title:string body:text
+```
 
-* ...
+After creating the scaffold you should run the db migrations
+
+### Running the migrations:
+
+```bash
+rails db:migrate
+```
